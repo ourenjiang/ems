@@ -10,11 +10,9 @@ public class Main {
     public static void main(String[] args) {
         //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
         // to see how IntelliJ IDEA suggests fixing it.
-//        Device device = new Device();
-//        device.start();
 
         ArrayList<Device> devices = new ArrayList<>();
-        for(int i = 0; i < 2; ++i){
+        for(int i = 0; i < 1; ++i){
             Device device = new Device();
             device.start();
             devices.add(device);
