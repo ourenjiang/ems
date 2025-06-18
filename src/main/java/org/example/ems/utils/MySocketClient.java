@@ -8,24 +8,20 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class MySocketClient {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         System.out.println("hello world");
 
-        try(Socket socket = new Socket("localhost", 8888)){
+        try {
+            Socket socket = new Socket("127.0.0.1", 8888);
             System.out.println("socket client connect success");
 
-            try (PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-                 BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            out.println("hello, i'm a socket client");
 
-                // 3. 发送消息
-                out.println("hello, i'm a socket client");
-
-                char[] buf = new char[3];
-                // 4. 读取响应
-                int size = in.read(buf, 0, 3);
-                System.out.println("服务器响应: " + new String(buf));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            while (true) {
+                String buf = in.readLine();
+                System.out.println("服务器响应: " + buf);
             }
         } catch (UnknownHostException e) {
             throw new RuntimeException(e);
