@@ -15,12 +15,13 @@ public class MySocketClient {
             Socket socket = new Socket("127.0.0.1", 8888);
             System.out.println("socket client connect success");
 
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            out.println("hello, i'm a socket client");
+            PrintWriter printWriter = new PrintWriter(socket.getOutputStream(), true);
+            printWriter.println("hello, i'm a socket client");
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             while (true) {
-                String buf = in.readLine();
+                String buf = bufferedReader.readLine();
                 System.out.println("服务器响应: " + buf);
             }
         } catch (UnknownHostException e) {
