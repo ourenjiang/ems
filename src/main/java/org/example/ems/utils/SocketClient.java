@@ -8,7 +8,7 @@ public class SocketClient {
     SocketClient(){
     }
 
-    SocketClient(String host, int port) {
+    public SocketClient(String host, int port) {
         try {
             socket = new Socket(host, port);
         } catch (IOException e) {
@@ -25,7 +25,7 @@ public class SocketClient {
         }
     }
 
-    String readLine(){
+    public String readLine(){
         String result;
         try {
             InputStreamReader inputStreamReader = new InputStreamReader(socket.getInputStream());
