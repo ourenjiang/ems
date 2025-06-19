@@ -13,10 +13,11 @@ public class Device implements DeviceBase {
         timer.scheduleAtFixedRate(new MyTask(), 0, 1000);
     }
 
-    static class MyTask extends TimerTask{
+    static class MyTask extends TimerTask {
 
         @Override
         public void run() {
+
             System.out.println("call MyTask run!");
         }
     }

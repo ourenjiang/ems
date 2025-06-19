@@ -3,6 +3,7 @@ package org.example;
 import org.example.ems.device.air.custom.Device;
 import org.example.ems.utils.ConfigLoader;
 import org.example.ems.utils.SocketClient;
+import org.example.ems.utils.SocketRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,5 +13,6 @@ import java.util.Map;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+        SocketRequest socketRequest;
     }
 }
