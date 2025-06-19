@@ -1,32 +1,42 @@
 package org.example;
 
 import org.example.ems.device.air.custom.Device;
+import org.example.ems.utils.ConfigLoader;
 import org.example.ems.utils.SocketClient;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-//        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-//        // to see how IntelliJ IDEA suggests fixing it.
-//
-//        ArrayList<Device> devices = new ArrayList<>();
-//        for(int i = 0; i < 1; ++i){
-//            Device device = new Device();
-//            device.start();
-//            devices.add(device);
-//        }
-//
-//        // 注册 JVM 关闭钩子
-//        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-//            for(Device device : devices){
-//                device.stop();
-//            }
-//            System.out.println("JVM 关闭，已清理资源");
-//        }));
+        testConfigLoader();
+    }
 
+    public static void testConfigLoader() {
+        // 获取整个配置
+        Map<String, Object> fullConfig = ConfigLoader.getConfig();
+        System.out.println("全量配置: " + fullConfig);
+
+        // 获取具体值
+        String appName = ConfigLoader.getValue("app.name");
+        String dbUrl = ConfigLoader.getValue("database.url");
+        Integer poolSize = ConfigLoader.getValue("database.pool-size");
+        Boolean featureEnabled = ConfigLoader.getValue("features.enabled");
+
+        System.out.println("应用名称: " + appName);
+        System.out.println("数据库URL: " + dbUrl);
+        System.out.println("连接池大小: " + poolSize);
+        System.out.println("功能开关: " + featureEnabled);
+
+        // 获取列表值
+        List<String> options = ConfigLoader.getValue("features.options");
+        System.out.println("功能选项: " + options);
+    }
+
+    public static void testSocketClient() {
         // 第一步，先创建一个全局的套接字句柄，用于关联业务代码和重连代码
         SocketClient localhost;
 
