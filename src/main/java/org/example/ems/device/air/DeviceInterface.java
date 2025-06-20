@@ -6,7 +6,7 @@ package org.example.ems.device.air;
 * 可以有默认方法和静态方法
 *
 * */
-public interface DeviceBase {
+public interface DeviceInterface {
     void start();
     void stop();
     int index();

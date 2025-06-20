@@ -1,7 +1,6 @@
-package org.example.ems.device.air.custom;
+package org.example.ems.device.air.langji;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Collector {
     private ArrayList<Runnable> runList = new ArrayList<>();
@@ -9,7 +8,7 @@ public class Collector {
 
     Collector(){
         runList.add(this::doFrame_10035_10058);
-        runList.add(Collector::doFrame_10035_10058_2);
+        runList.add(org.example.ems.device.air.langji.Collector::doFrame_10035_10058_2);
         runList.add(this::doFrame_30001_30025);
 
         for(Runnable runnable : runList){
@@ -49,5 +48,4 @@ public class Collector {
     private void doFrame_30001_30025(){
         System.out.println("call doFrame_30001_30025");
     }
-
 }

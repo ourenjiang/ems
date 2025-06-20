@@ -13,3 +13,15 @@ features:
   options:
     - "AUTH_ENABLED"
     - "LOGGING"
+
+## 空调设备组
+air: {
+  devices: [
+    {
+      enable: true,
+      type: Custom,
+      modbus-proxy: 192.168.10.1:1507,
+      modbus-addr: 1,
+    },
+  ]
+}

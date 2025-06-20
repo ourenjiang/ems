@@ -1,35 +1,37 @@
 package org.example.ems.utils;
 
 import org.yaml.snakeyaml.Yaml;
+
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigLoader {
-    private static final String CONFIG_FILE = "application.yml";
+    //    private static final String CONFIG_FILE = "application.yml";
     private static Map<String, Object> config;
 
-    static {
-        loadConfig();
-    }
+    private static Map<String, Object> loadConfig(String fileName) {
+        Map<String, Object> config = new HashMap<>();
 
-    private static void loadConfig() {
         Yaml yaml = new Yaml();
         try (InputStream inputStream = ConfigLoader.class
                 .getClassLoader()
-                .getResourceAsStream(CONFIG_FILE)) {
+                .getResourceAsStream(fileName)) {
 
             if (inputStream == null) {
-                throw new RuntimeException("配置文件未找到: " + CONFIG_FILE);
+                throw new RuntimeException("配置文件未找到: " + fileName);
             }
 
             config = yaml.load(inputStream);
         } catch (Exception e) {
             throw new RuntimeException("加载配置文件失败", e);
         }
+        return config;
     }
 
     // 获取整个配置对象
-    public static Map<String, Object> getConfig() {
+    public static Map<String, Object> getConfig(String fileName) {
+        config = loadConfig(fileName);
         return config;
     }
 

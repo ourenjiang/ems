@@ -1,4 +1,4 @@
-package org.example.ems.device.air.custom;
+package org.example.ems.device.air.langji;
 
 import org.example.ems.device.air.DeviceInterface;
 
@@ -6,7 +6,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Device implements DeviceInterface {
-    private final Timer timer = new Timer();
+    Timer timer = new Timer();
 
     @Override
     public void start() {
